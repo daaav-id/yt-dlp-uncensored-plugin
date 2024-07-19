@@ -24,6 +24,5 @@ Choose one of the following options:
  
 In that directory clone this repository (or download the latest snapshot) in a new folder.
 
-For example, this would work: `/etc/yt-dlp/plugins/yt-dlp-uncensored-plugin`
-
+For example, this would work: `/etc/yt-dlp/plugins/yt-dlp-uncensored-plugin/`.
 One working file will be: /etc/yt-dlp-plugins/yt-dlp-uncensored-plugin/yt_dlp_plugins/extractor/yourporn.py
