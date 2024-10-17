@@ -3,6 +3,7 @@
 ## Supported sites:
 
 - SxyPrn dot com (aka YourPorn)
+- DoodStream
 
 ## Installation:
 
