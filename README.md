@@ -4,6 +4,8 @@
 
 - SxyPrn dot com (aka YourPorn)
 - DoodStream
+- FileMoon
+- Voe
 
 ## Installation:
 
