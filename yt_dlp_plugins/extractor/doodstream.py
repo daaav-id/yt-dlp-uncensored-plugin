@@ -6,7 +6,7 @@ import time
 
 
 class DoodStreamIE(InfoExtractor):
-    _VALID_URL = r'(?P<domain>https?://(?:www\.)?d((o*)|(0*))?d(s)?\.(?:com|to|watch|so|pm|wf|re|pro|la|li))/(?P<type>[ed])/(?P<id>[a-z0-9]+)'
+    _VALID_URL = r'(?P<domain>https?://(?:www\.)?(d((o*)|(0*))?d?(s)?(ter)?(2play)?)\.(?:com|to|watch|so|pm|wf|re|pro|la|li|work))/(?P<type>[ed])/(?P<id>[a-z0-9]+)'
     _TESTS = [{
         'url': 'http://dood.to/e/5s1wmbdacezb',
         'md5': '4568b83b31e13242b3f1ff96c55f0595',
