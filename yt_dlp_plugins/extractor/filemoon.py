@@ -10,7 +10,7 @@ from yt_dlp.utils import (
 
 
 class FileMoonIE(InfoExtractor):
-    _VALID_URL = r'https?://(?:www\.)?filemoon\.sx/./(?P<id>\w+)'
+    _VALID_URL = r'https?://(?:www\.)?(klcams|filemoon)\.(sx|com)/./(?P<id>\w+)'
 
     def _real_extract(self, url):
         video_id = self._match_id(url)
