@@ -5,6 +5,7 @@
 - SxyPrn dot com (aka YourPorn)
 - DoodStream
 - FileMoon
+- VidGuard
 - Voe
 
 ## Installation:
