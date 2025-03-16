@@ -31,35 +31,26 @@ class VoeIE(InfoExtractor):
             }
 
         sources = self._html_search_regex(r'var sources = (?P<sources>[\S\s]*);[\S\s]*const video', webpage, 'sources')
-        print(sources)
+        #print(sources)
         sources = json.loads(sources.replace("'", '"').replace(', }', '}'))
         for source in sources:
             try:
                 sources[source] = base64.b64decode(sources[source]).decode('utf-8')
             except:
                 sources[source] = sources[source]
-        print(sources)
+        #print(sources)
 
         formats = []
         dl_url = None
         for source in sources:
             if source == 'hls':
-                dl_url = sources[source]
-                formats.append({"url": sources[source], "format_id": source, "manifest_url": sources[source]})
+                formats = self._extract_m3u8_formats(sources[source], video_id, ext="mp4", entry_protocol='m3u8_native', m3u8_id="hls")
+                break
             if source == 'mp4':
                 formats.append({"url": sources[source], "format_id": source})
 
-        print(formats)
-
-        #hls = self._html_search_regex(r'\'hls\':[\s]*\'(?P<hls>[a-zA-Z0-9=]*)\',', webpage, 'hls')
-        #hls = str(base64.b64decode(hls))
-        #print(hls)
-        #formats = [{"url": mp4, "format_id": "mp4"}]
-
         return {
-            #'type': 'url_transparent',
             'id': video_id,
             'title': self._generic_title(url) or video_id,
-            'url': dl_url,
-            'ext': 'mp4'
+            'formats': formats,
         }
