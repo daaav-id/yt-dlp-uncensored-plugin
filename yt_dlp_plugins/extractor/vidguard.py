@@ -1,5 +1,4 @@
 # https://github.com/Mastaaa1987/vxparser/blob/main/vxparser/helper/resolveurl/plugins/vidguard.py
-# https://github.com/shashstormer/godstream/blob/master/extractors/vidguard.py
 
 from yt_dlp.extractor.common import InfoExtractor
 
@@ -32,15 +31,15 @@ class VidGuardIE(InfoExtractor):
             stream_url = json.loads(aa_decoded[11:]).get('stream')
             #print(stream_url)
             hls = sig_decode(stream_url)
-            print(hls)
+            #print(hls)
+            formats = self._extract_m3u8_formats(hls, video_id, ext="mp4", entry_protocol='m3u8_native', m3u8_id="hls")
 
         return {
             #'type': 'url_transparent',
             'type': 'video',
             'id': video_id,
             'title': self._generic_title(url) or video_id,
-            'url': hls,
-            'ext': 'mp4'
+            'formats': formats,
         }
 
 

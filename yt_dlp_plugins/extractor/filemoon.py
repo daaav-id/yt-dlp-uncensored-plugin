@@ -17,7 +17,12 @@ class FileMoonIE(InfoExtractor):
         webpage = self._download_webpage(url, video_id)
         
         url = self._search_regex(r'iframe src="(?P<videoURL>[^"]+)"', webpage, 'videoURL')
-        webpage = self._download_webpage(url, video_id)
+        headers = {
+            'User-Agent': 'curl',
+            'Accept': '*/*',
+            'Sec-Fetch-Dest': 'iframe',
+        }
+        webpage = self._download_webpage(url, video_id, headers=headers)
 
         matches = re.findall(r'(?s)(eval.*?)</script>', webpage)
         packed = matches[-1]
