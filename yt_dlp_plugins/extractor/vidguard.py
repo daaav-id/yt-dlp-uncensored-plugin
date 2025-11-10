@@ -9,7 +9,7 @@ import re
 
 
 class VidGuardIE(InfoExtractor):
-    _VALID_URL = r'https?://((?:vid-?guard|vgfplay|fslinks|moflix-stream|listeamed|go-streamer|gsfjzmqu|v?[g6b]?embedv?)\.(?:to|com|day|xyz|org|net|sbs))/(?:e|v|d)/(?P<id>[0-9a-zA-Z]+)'
+    _VALID_URL = r'(https?://)?((?:vid-?guard|vgfplay|fslinks|moflix-stream|listeamed|go-streamer|gsfjzmqu|v?[g6b]?embedv?)\.(?:to|com|day|xyz|org|net|sbs))/(?:e|v|d)/(?P<id>[0-9a-zA-Z]+)'
     _TESTS = []
 
     def _real_extract(self, url):

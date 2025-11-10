@@ -22,6 +22,7 @@ class FileMoonIE(InfoExtractor):
             'Accept': '*/*',
             'Sec-Fetch-Dest': 'iframe',
         }
+        print(url)
         webpage = self._download_webpage(url, video_id, headers=headers)
 
         matches = re.findall(r'(?s)(eval.*?)</script>', webpage)
@@ -32,7 +33,11 @@ class FileMoonIE(InfoExtractor):
                 r'setup\s*\(\s*\{\s*sources\s*:\s*(.*?])', unpacked, 'jwplayer sources'),
             video_id, transform_source=js_to_json)
 
+        print(jwplayer_sources)
+
         formats = self._parse_jwplayer_formats(jwplayer_sources, video_id)
+
+        print(formats)
 
         return {
             'id': video_id,
