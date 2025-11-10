@@ -37,12 +37,15 @@ class SxyprnIE(InfoExtractor):
                 group='data'),
             video_id)[video_id].split('/')
 
-        num = 0
-        for c in parts[6] + parts[7]:
-            if c.isnumeric():
-                num += int(c)
-        parts[5] = compat_str(int(parts[5]) - num)
-        parts[1] += '8'
+        def ssut51(arg):
+            return sum(int(ch) for ch in arg if ch.isdigit())
+
+        boo = base64.b64encode(
+            (str(ssut51(parts[6])) + "-" + "sxyprn.com" + "-" + str(ssut51(parts[7]))).encode()
+        ).decode().replace('+', '-').replace('/', '_').replace('=', '.')
+
+        parts[1] += "8" + "/" + boo
+        parts[5] = str(int(parts[5]) - ssut51(parts[6]) - ssut51(parts[7]))
         video_url = urljoin(url, '/'.join(parts))
 
         title = (self._search_regex(
